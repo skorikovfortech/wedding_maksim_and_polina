@@ -22,3 +22,14 @@
 .invitation.opened .envelope-scene{transform:scale(1.13);filter:blur(5px);opacity:.45}.invitation.opened .envelope-title{opacity:0;transform:translateY(-18px)}.invitation.opened .opening-light{opacity:1;transform:scale(1.35)}
 @media(min-width:1000px){.envelope-scene{background-size:cover;background-position:50% 51%}.envelope-title{margin-left:18vw}}
 @media(max-width:760px){.envelope-scene{inset:0;background-position:center}.envelope-title{position:absolute;left:20px;right:20px;bottom:12vh}.envelope-title strong{font-size:52px}.envelope-title small{font-size:7px}}
+
+/* Layered envelope: contained on desktop, real flap movement */
+.invitation{perspective:1600px;background:#eee7de}
+.invitation:before{content:'';position:absolute;inset:-35px;background:url('./assets/envelope-fullscreen.jpg') center/cover no-repeat;filter:blur(28px) brightness(.95);transform:scale(1.08);opacity:.55}
+.envelope-scene{inset:0;background-size:contain;background-position:center;background-repeat:no-repeat;transform:scale(1);z-index:1}
+.envelope-inner,.envelope-flap-animated{position:absolute;z-index:2;left:50%;top:50%;height:100svh;aspect-ratio:940/1664;max-width:100vw;transform:translate(-50%,-50%);clip-path:polygon(100% 5%,100% 100%,38% 51.5%)}
+.envelope-inner{background:linear-gradient(145deg,#f8f3eb,#e9dfd3);box-shadow:inset 18px 0 35px rgba(100,75,59,.08)}
+.envelope-flap-animated{z-index:3;background:url('./assets/envelope-fullscreen.jpg') center/100% 100% no-repeat;transform-origin:100% 50%;backface-visibility:hidden;transition:transform 1.55s cubic-bezier(.42,0,.18,1),filter 1.2s}
+.opening-light{z-index:4;pointer-events:none}.invitation.opened .envelope-flap-animated{transform:translate(-50%,-50%) rotateY(-128deg);filter:brightness(1.08)}
+.invitation.opened .envelope-scene{transform:scale(1.025);filter:blur(2px);opacity:.72}.invitation.opened .opening-light{opacity:.9;transform:scale(1.15);transition-delay:1.15s}
+@media(max-width:760px){.invitation:before{display:none}.envelope-scene{background-size:cover}.envelope-inner,.envelope-flap-animated{width:100vw;height:100svh;aspect-ratio:auto}.envelope-flap-animated{background-size:cover;background-position:center}.envelope-title{display:none}}
