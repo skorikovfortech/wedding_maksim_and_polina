@@ -55,3 +55,13 @@
 .music-toggle{width:auto;min-width:48px;padding:0 17px;border-radius:25px;font:500 9px var(--sans);letter-spacing:.06em}.music-toggle span{white-space:nowrap}
 .single-lookbook{max-width:900px;margin:0 auto;box-shadow:0 30px 65px rgba(64,45,36,.15);background:#f7f0e9;overflow:hidden}.single-lookbook img{display:block;width:100%;height:auto}.single-lookbook figcaption{text-align:center;padding:18px;font:italic 18px var(--serif);color:var(--muted);background:rgba(255,253,249,.92)}
 @media(max-width:760px){.envelope-stage{width:135vw}.envelope-wordmark{bottom:11%;font-size:38px}.music-toggle{right:12px}.single-lookbook{margin-left:-20px;margin-right:-20px}}
+
+/* Cross-browser symbols, embossed paper and tighter envelope crop */
+.wedding-day b{width:28px;height:25px;background:var(--rose);transform:rotate(45deg);border-radius:3px;color:transparent;font-size:0}
+.wedding-day b:before,.wedding-day b:after{content:'';position:absolute;width:28px;height:28px;border-radius:50%;background:var(--rose);z-index:-1}
+.wedding-day b:before{left:-14px;top:0;transform:none}.wedding-day b:after{left:0;top:-14px}.wedding-day b{position:relative}.wedding-day b::first-line{color:transparent}
+.wedding-day:after{content:'14';position:absolute;z-index:5;color:#fff;font:500 14px var(--serif);left:50%;top:50%;transform:translate(-50%,-51%)}
+.map-button>span{position:relative;width:14px;height:14px;display:block;border-top:1px solid currentColor;border-right:1px solid currentColor}.map-button>span:after{content:'';position:absolute;width:17px;height:1px;background:currentColor;right:-2px;top:6px;transform:rotate(-45deg);transform-origin:right center}
+.welcome,.schedule{background-color:var(--milk);background-image:linear-gradient(rgba(255,253,250,.82),rgba(255,253,250,.82)),url('./assets/embossed-floral-background.jpg');background-size:cover;background-position:center}.rsvp{background-image:linear-gradient(rgba(250,247,242,.88),rgba(250,247,242,.88)),url('./assets/embossed-floral-background.jpg');background-size:cover;background-position:center}
+.envelope-stage{width:max(155vw,175vh);max-width:none}.invitation:before{opacity:0}.invitation{background:#efe8df}.envelope-stage .envelope-scene,.envelope-stage .envelope-flap-animated{background-size:100% 100%}
+@media(max-width:760px){.envelope-stage{width:max(205vw,175vh);max-width:none}.envelope-wordmark{bottom:12%}}
