@@ -65,3 +65,10 @@
 .welcome,.schedule{background-color:var(--milk);background-image:linear-gradient(rgba(255,253,250,.82),rgba(255,253,250,.82)),url('./assets/embossed-floral-background.jpg');background-size:cover;background-position:center}.rsvp{background-image:linear-gradient(rgba(250,247,242,.88),rgba(250,247,242,.88)),url('./assets/embossed-floral-background.jpg');background-size:cover;background-position:center}
 .envelope-stage{width:max(155vw,175vh);max-width:none}.invitation:before{opacity:0}.invitation{background:#efe8df}.envelope-stage .envelope-scene,.envelope-stage .envelope-flap-animated{background-size:100% 100%}
 @media(max-width:760px){.envelope-stage{width:max(205vw,175vh);max-width:none}.envelope-wordmark{bottom:12%}}
+
+/* Precise SVG symbols and stronger embossed ornament */
+.wedding-day:after,.wedding-day b{display:none}.wedding-day svg{display:block;width:42px;height:39px;overflow:visible}.wedding-day svg path{fill:var(--rose)}.wedding-day svg text{fill:#fff;font:500 14px var(--serif);text-anchor:middle;dominant-baseline:middle}
+.map-button>span{display:none}.map-button>svg{display:block;width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.welcome,.schedule{background-image:linear-gradient(rgba(255,253,250,.55),rgba(255,253,250,.55)),url('./assets/embossed-floral-background.jpg')}.rsvp{background-image:linear-gradient(rgba(250,247,242,.62),rgba(250,247,242,.62)),url('./assets/embossed-floral-background.jpg')}
+.envelope-wordmark{top:66%;bottom:auto}
+@media(max-width:760px){.envelope-wordmark{top:66%;bottom:auto}}
