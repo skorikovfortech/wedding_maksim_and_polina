@@ -33,3 +33,15 @@
 .opening-light{z-index:4;pointer-events:none}.invitation.opened .envelope-flap-animated{transform:translate(-50%,-50%) rotateY(-128deg);filter:brightness(1.08)}
 .invitation.opened .envelope-scene{transform:scale(1.025);filter:blur(2px);opacity:.72}.invitation.opened .opening-light{opacity:.9;transform:scale(1.15);transition-delay:1.15s}
 @media(max-width:760px){.invitation:before{display:none}.envelope-scene{background-size:cover}.envelope-inner,.envelope-flap-animated{width:100vw;height:100svh;aspect-ratio:auto}.envelope-flap-animated{background-size:cover;background-position:center}.envelope-title{display:none}}
+
+/* Horizontal envelope with the live site revealed beneath the flap */
+.invitation{background:rgba(239,232,223,1);transition:background 1.2s 1.25s,opacity .95s 2.85s,visibility .95s 2.85s}
+.invitation:before{background:url('./assets/envelope-horizontal.jpg') center/cover no-repeat;filter:blur(34px) brightness(.98);opacity:.65;transition:opacity 1.2s 1.1s}
+.envelope-stage{position:relative;z-index:2;width:min(88vw,1320px);aspect-ratio:16/9;perspective:1800px;filter:drop-shadow(0 28px 45px rgba(75,55,43,.17));transition:opacity .8s 2.25s,transform 1.1s 2s}
+.envelope-stage .envelope-scene,.envelope-stage .envelope-inner,.envelope-stage .envelope-flap-animated{position:absolute;inset:0;width:100%;height:100%;max-width:none;aspect-ratio:auto;left:0;top:0}
+.envelope-stage .envelope-scene{z-index:1;background:url('./assets/envelope-horizontal.jpg') center/100% 100% no-repeat;transform:none;filter:none;opacity:1}
+.envelope-stage .envelope-inner{z-index:2;clip-path:polygon(13% 13%,87% 13%,50% 64%);background:linear-gradient(rgba(61,45,36,.12),rgba(61,45,36,.02)),url('./assets/hero-wedding.jpg') center 58%/cover no-repeat;box-shadow:none;transform:none}
+.envelope-stage .envelope-flap-animated{z-index:3;clip-path:polygon(13% 13%,87% 13%,50% 64%);background:url('./assets/envelope-horizontal.jpg') center/100% 100% no-repeat;transform:none;transform-origin:50% 13%;display:flex;align-items:center;justify-content:center;backface-visibility:hidden;transition:transform 1.65s cubic-bezier(.38,0,.15,1),filter 1.4s}
+.envelope-flap-animated span{transform:translateY(-18%);font:400 clamp(35px,5vw,76px) var(--script);color:#927e70;text-shadow:0 1px 8px rgba(255,255,255,.85);transition:opacity .6s .15s}
+.invitation.opened{background:rgba(239,232,223,0)}.invitation.opened:before{opacity:0}.invitation.opened .envelope-flap-animated{transform:rotateX(168deg);filter:brightness(1.04)}.invitation.opened .envelope-flap-animated span{opacity:0}.invitation.opened .envelope-stage{opacity:0;transform:scale(1.025)}
+@media(max-width:760px){.invitation{background:#efe8df}.invitation:before{display:block;filter:blur(22px)}.envelope-stage{width:96vw}.envelope-flap-animated span{font-size:34px}.envelope-stage .envelope-inner{background-position:center}}
