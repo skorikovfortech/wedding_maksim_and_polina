@@ -1,35 +1,9 @@
-const weddingDate = new Date('2026-08-14T16:00:00+03:00');
-const units = { days: document.querySelector('#days'), hours: document.querySelector('#hours'), minutes: document.querySelector('#minutes'), seconds: document.querySelector('#seconds') };
-
-function updateCountdown() {
-  const distance = Math.max(0, weddingDate - new Date());
-  const values = {
-    days: Math.floor(distance / 86400000),
-    hours: Math.floor((distance / 3600000) % 24),
-    minutes: Math.floor((distance / 60000) % 60),
-    seconds: Math.floor((distance / 1000) % 60)
-  };
-  Object.entries(values).forEach(([key, value]) => units[key].textContent = String(value).padStart(key === 'days' ? 3 : 2, '0'));
-}
-updateCountdown(); setInterval(updateCountdown, 1000);
-
-const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-  if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-}), { threshold: .12 });
-document.querySelectorAll('.reveal').forEach((el, index) => { el.style.transitionDelay = `${(index % 3) * 90}ms`; observer.observe(el); });
-
-const heroBg = document.querySelector('.hero-bg');
-window.addEventListener('scroll', () => { if (window.scrollY < window.innerHeight) heroBg.style.transform = `translateY(${window.scrollY * .16}px) scale(1.05)`; }, { passive: true });
-
-const menuButton = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-menuButton.addEventListener('click', () => { const open = navLinks.classList.toggle('open'); menuButton.setAttribute('aria-expanded', open); });
-navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { navLinks.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); }));
-
-document.querySelector('#rsvp-form').addEventListener('submit', event => {
-  event.preventDefault();
-  const status = event.currentTarget.querySelector('.form-status');
-  const name = new FormData(event.currentTarget).get('name').trim().split(' ')[0];
-  status.textContent = `${name}, спасибо! Ваш ответ сохранён ♡`;
-  event.currentTarget.querySelector('button').textContent = 'Ответ отправлен ✓';
-});
+const weddingDate=new Date('2026-08-14T16:00:00+03:00');const units={days:document.querySelector('#days'),hours:document.querySelector('#hours'),minutes:document.querySelector('#minutes'),seconds:document.querySelector('#seconds')};
+function updateCountdown(){const d=Math.max(0,weddingDate-new Date()),v={days:Math.floor(d/86400000),hours:Math.floor(d/3600000%24),minutes:Math.floor(d/60000%60),seconds:Math.floor(d/1000%60)};Object.entries(v).forEach(([k,n])=>units[k].textContent=k==='days'?String(n):String(n).padStart(2,'0'))}updateCountdown();setInterval(updateCountdown,1000);
+const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
+const heroBg=document.querySelector('.hero-bg');addEventListener('scroll',()=>{if(scrollY<innerHeight)heroBg.style.transform=`translateY(${scrollY*.15}px) scale(1.05)`},{passive:true});
+let player,musicPlaying=false,musicRequested=false;window.onYouTubeIframeAPIReady=()=>{player=new YT.Player('youtube-player',{height:'1',width:'1',videoId:'ar-Gso70P9o',playerVars:{playsinline:1,controls:0,loop:1,playlist:'ar-Gso70P9o'},events:{onReady:()=>{if(musicRequested){player.playVideo();musicPlaying=true}}}})};
+const intro=document.querySelector('#invitation'),musicButton=document.querySelector('#music-toggle');document.querySelector('#open-invitation').addEventListener('click',()=>{intro.classList.add('opened');document.body.classList.remove('intro-open');musicButton.classList.add('show');musicRequested=true;if(player?.playVideo){player.playVideo();musicPlaying=true}});
+musicButton.addEventListener('click',()=>{if(!player)return;if(musicPlaying){player.pauseVideo();musicButton.classList.add('paused')}else{player.playVideo();musicButton.classList.remove('paused')}musicPlaying=!musicPlaying});
+const slides=[...document.querySelectorAll('.slide')],dots=[...document.querySelectorAll('.slider-dots button')];let slide=0;function showSlide(n){slide=(n+slides.length)%slides.length;slides.forEach((e,i)=>e.classList.toggle('active',i===slide));dots.forEach((e,i)=>e.classList.toggle('active',i===slide))}document.querySelector('.next').addEventListener('click',()=>showSlide(slide+1));document.querySelector('.prev').addEventListener('click',()=>showSlide(slide-1));dots.forEach((d,i)=>d.addEventListener('click',()=>showSlide(i)));
+document.querySelector('#rsvp-form').addEventListener('submit',e=>{e.preventDefault();const n=new FormData(e.currentTarget).get('name').trim().split(' ')[0];e.currentTarget.querySelector('.form-status').textContent=`${n}, спасибо! Ваш ответ сохранён ♡`;e.currentTarget.querySelector('button').textContent='Ответ отправлен ✓'});
