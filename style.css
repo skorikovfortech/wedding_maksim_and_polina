@@ -45,3 +45,13 @@
 .envelope-flap-animated span{transform:translateY(-18%);font:400 clamp(35px,5vw,76px) var(--script);color:#927e70;text-shadow:0 1px 8px rgba(255,255,255,.85);transition:opacity .6s .15s}
 .invitation.opened{background:rgba(239,232,223,0)}.invitation.opened:before{opacity:0}.invitation.opened .envelope-flap-animated{transform:rotateX(168deg);filter:brightness(1.04)}.invitation.opened .envelope-flap-animated span{opacity:0}.invitation.opened .envelope-stage{opacity:0;transform:scale(1.025)}
 @media(max-width:760px){.invitation{background:#efe8df}.invitation:before{display:block;filter:blur(22px)}.envelope-stage{width:96vw}.envelope-flap-animated span{font-size:34px}.envelope-stage .envelope-inner{background-position:center}}
+
+/* Closer envelope, quiet inner paper, very slow dissolve */
+.invitation{background:#efe8df;transition:background 1.8s 2.25s,opacity 2.6s 4.75s,visibility 2.6s 4.75s}
+.envelope-stage{width:min(112vw,1680px);transition:opacity 1.8s 3.15s,transform 2.1s 2.7s}
+.envelope-stage .envelope-inner{background:#eee6dc}
+.envelope-wordmark{position:absolute;z-index:4;left:50%;bottom:14%;transform:translateX(-50%);font:400 clamp(38px,5vw,76px) var(--script);color:#8d796c;text-shadow:0 1px 8px rgba(255,255,255,.9);white-space:nowrap;transition:opacity 1s .15s,transform 1.1s}
+.invitation.opened{background:#eee6dc}.invitation.opened .envelope-wordmark{opacity:0;transform:translate(-50%,10px)}
+.music-toggle{width:auto;min-width:48px;padding:0 17px;border-radius:25px;font:500 9px var(--sans);letter-spacing:.06em}.music-toggle span{white-space:nowrap}
+.single-lookbook{max-width:900px;margin:0 auto;box-shadow:0 30px 65px rgba(64,45,36,.15);background:#f7f0e9;overflow:hidden}.single-lookbook img{display:block;width:100%;height:auto}.single-lookbook figcaption{text-align:center;padding:18px;font:italic 18px var(--serif);color:var(--muted);background:rgba(255,253,249,.92)}
+@media(max-width:760px){.envelope-stage{width:135vw}.envelope-wordmark{bottom:11%;font-size:38px}.music-toggle{right:12px}.single-lookbook{margin-left:-20px;margin-right:-20px}}
